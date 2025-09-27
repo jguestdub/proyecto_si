@@ -1,7 +1,62 @@
-[gd_scene format=3 uid="uid://co55s274khg58"]
+[gd_scene load_steps=2 format=3 uid="uid://co55s274khg58"]
+
+[sub_resource type="FontFile" id="FontFile_x7udj"]
+cache/0/5/0/ascent = 0.0
+cache/0/5/0/descent = 0.0
+cache/0/5/0/underline_position = 0.0
+cache/0/5/0/underline_thickness = 0.0
+cache/0/5/0/scale = 1.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/4/0/ascent = 0.0
+cache/0/4/0/descent = 0.0
+cache/0/4/0/underline_position = 0.0
+cache/0/4/0/underline_thickness = 0.0
+cache/0/4/0/scale = 1.0
 
 [node name="MenuPrincipal" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="ContenedorPrincipal" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="ContenedorPrincipal"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.07999998, 0.07999998, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_x7udj")
+theme_override_font_sizes/font_size = 5
+text = "JAMES MASSACRE"
+
+[node name="Button" type="Button" parent="ContenedorPrincipal/Label"]
+layout_mode = 0
+offset_left = 12.5
+offset_top = 7.0
+offset_right = 28.5
+offset_bottom = 20.0
+theme_override_font_sizes/font_size = 3
+text = "PLAY"
+
+[node name="PanelSeleccionNivel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelSeleccionNivel"]
+layout_mode = 2
