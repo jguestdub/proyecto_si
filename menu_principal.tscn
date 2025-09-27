@@ -45,17 +45,32 @@ func _on_volver_button_pressed():
 
 # Esta función se ejecuta cuando CUALQUIER botón de nivel es presionado.
 func _on_level_button_pressed(numero_nivel):
-	print(\"Cargando nivel: \" + str(numero_nivel))
-	
-	# Aquí es donde pondrías la lógica para cambiar de escena.
-	# Por ejemplo, si tus niveles se llaman \"nivel_1.tscn\", \"nivel_2.tscn\", etc.
-	var ruta_nivel = \"res://escenas/nivel_\" + str(numero_nivel) + \".tscn\"
-	
-	# Comprobamos si el archivo de la escena existe antes de intentar cargarlo
-	if ResourceLoader.exists(ruta_nivel):
-		get_tree().change_scene_to_file(ruta_nivel)
+	print(\"Botón de nivel presionado: \" + str(numero_nivel))
+
+	# Comprobamos si el número del nivel es 1
+	if numero_nivel == 1:
+		# Si es el nivel 1, cargamos la escena \"main.tscn\"
+		# ¡IMPORTANTE! Asegúrate de que la ruta a tu escena sea correcta.
+		# Puedes arrastrar el archivo de la escena desde el panel \"Sistema de Archivos\"
+		# para obtener la ruta exacta.
+		print(\"Cargando la escena principal (main.tscn)...\")
+		get_tree().change_scene_to_file(\"res://main.tscn\")
 	else:
-		print(\"Error: No se encontró la escena del nivel en la ruta: \" + ruta_nivel)
+		# Para todos los demás niveles (2, 3, 4...), usamos la lógica anterior
+		var ruta_nivel = \"res://escenas/nivel_\" + str(numero_nivel) + \".tscn\"
+		print(\"Intentando cargar: \" + ruta_nivel)
+		
+		# Comprobamos si el archivo de la escena existe antes de intentar cargarlo
+		if ResourceLoader.exists(ruta_nivel):
+			get_tree().change_scene_to_file(ruta_nivel)
+		else:
+			print(\"Error: No se encontró la escena del nivel en la ruta: \" + ruta_nivel)
+			# Aquí podrías, por ejemplo, hacer que el botón se vea deshabilitado
+			# o mostrar un mensaje en pantalla.
+
+
+func _on_button_pressed() -> void:
+	pass # Replace with function body.
 "
 
 [sub_resource type="FontFile" id="FontFile_x7udj"]
@@ -501,14 +516,16 @@ theme_override_font_sizes/font_size = 128
 text = "PLAY"
 
 [node name="PanelSeleccionNivel" type="PanelContainer" parent="."]
+visible = false
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 39.0
-offset_top = 65.0
-offset_right = 1068.0
-offset_bottom = 262.0
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 27.7
+anchor_bottom = 8.912001
+offset_left = -1.0
+offset_top = 45.0
+offset_bottom = -54.48004
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -517,67 +534,67 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="PanelSeleccionNivel/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 130
+theme_override_font_sizes/font_size = 55
 text = "Seleccionar Nivel"
 
 [node name="GridContainer" type="GridContainer" parent="PanelSeleccionNivel/VBoxContainer"]
 layout_mode = 2
-columns = 5
+columns = 10
 
 [node name="Button" type="Button" parent="PanelSeleccionNivel/VBoxContainer/GridContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 5
+theme_override_font_sizes/font_size = 75
 text = "1"
 
 [node name="Button2" type="Button" parent="PanelSeleccionNivel/VBoxContainer/GridContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 5
+theme_override_font_sizes/font_size = 75
 text = "2"
 
 [node name="Button3" type="Button" parent="PanelSeleccionNivel/VBoxContainer/GridContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 5
+theme_override_font_sizes/font_size = 75
 text = "3"
 
 [node name="Button4" type="Button" parent="PanelSeleccionNivel/VBoxContainer/GridContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 5
+theme_override_font_sizes/font_size = 75
 text = "4"
 
 [node name="Button5" type="Button" parent="PanelSeleccionNivel/VBoxContainer/GridContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 5
+theme_override_font_sizes/font_size = 75
 text = "5"
 
 [node name="Button6" type="Button" parent="PanelSeleccionNivel/VBoxContainer/GridContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 5
+theme_override_font_sizes/font_size = 75
 text = "6"
 
 [node name="Button7" type="Button" parent="PanelSeleccionNivel/VBoxContainer/GridContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 5
+theme_override_font_sizes/font_size = 75
 text = "7"
 
 [node name="Button8" type="Button" parent="PanelSeleccionNivel/VBoxContainer/GridContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 5
+theme_override_font_sizes/font_size = 75
 text = "8"
 
 [node name="Button9" type="Button" parent="PanelSeleccionNivel/VBoxContainer/GridContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 5
+theme_override_font_sizes/font_size = 75
 text = "9"
 
 [node name="Button10" type="Button" parent="PanelSeleccionNivel/VBoxContainer/GridContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 5
+theme_override_font_sizes/font_size = 75
 text = "10"
 
 [node name="Button" type="Button" parent="PanelSeleccionNivel/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 4
+theme_override_font_sizes/font_size = 104
 text = "VOLVER"
 
-[connection signal="pressed" from="ContenedorPrincipal/Label/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="ContenedorPrincipal/Label/Button" to="." method="_on_jugar_button_pressed"]
 [connection signal="pressed" from="PanelSeleccionNivel/VBoxContainer/Button" to="." method="_on_button_pressed"]
