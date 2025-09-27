@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d20i8quikt3ij"]
+[gd_scene load_steps=6 format=3 uid="uid://d20i8quikt3ij"]
 
 [ext_resource type="Script" uid="uid://bxsni3v130j81" path="res://character_body_2d.gd" id="1_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://idjd060gsxo8" path="res://icon.svg" id="2_h2yge"]
+[ext_resource type="AudioStream" uid="uid://bj7bu4htmqvx1" path="res://City.wav" id="3_h2yge"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(1148.5, 20)
@@ -18,6 +19,7 @@ position = Vector2(576.75, 636)
 shape = SubResource("RectangleShape2D_1bvp3")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(0, -2)
 script = ExtResource("1_0xm2m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
@@ -30,3 +32,9 @@ texture = ExtResource("2_h2yge")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(571, 320)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+visible = false
+stream = ExtResource("3_h2yge")
+volume_db = -20.0
+autoplay = true
