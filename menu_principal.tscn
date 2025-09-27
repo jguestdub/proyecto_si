@@ -1,15 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://co55s274khg58"]
+[gd_scene load_steps=2 format=3 uid="uid://co55s274khg58"]
 
-[sub_resource type="GDScript" id="GDScript_x7udj"]
-resource_name = "11"
-script/source = "extends Control
+[ext_resource type="AudioStream" uid="uid://m5qeahanj0bs" path="res://Ending.wav" id="1_gmcsc"]
 
-# Referencias a los contenedores para poder mostrarlos y ocultarlos.
-# El signo $ es una forma corta de get_node().
-@onready var contenedor_principal = $ContenedorPrincipal
-@onready var panel_seleccion_nivel = $PanelSeleccionNivel
-@onready var grid_container_niveles = $PanelSeleccionNivel/VBoxContainer/GridContainer
-
+[node name="MenuPrincipal"]
+personaje
 func _ready():
 	# Hacemos que el panel de niveles esté oculto al iniciar.
 	panel_seleccion_nivel.hide()
